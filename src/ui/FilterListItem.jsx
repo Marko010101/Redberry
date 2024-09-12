@@ -3,7 +3,7 @@ import styled from "styled-components";
 import ArrowUp from "../../public/arrowUp.svg?react";
 import ArrowDown from "../../public/arrowDown.svg?react";
 import DropdownInput from "./DropdownInput.jsx";
-import Dropdown from "./DropDown.jsx";
+import Dropdown from "./Dropdown.jsx";
 import Dropdownbedroom from "./Dropdownbedroom.jsx";
 
 const StyledLi = styled.li`
