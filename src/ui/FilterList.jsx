@@ -11,6 +11,9 @@ const FilterList = () => {
   const handleToggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+  const handleClose = () => {
+    setOpenIndex(null);
+  };
 
   if (isLoading) return <Loader />;
 
@@ -20,6 +23,7 @@ const FilterList = () => {
         index={0}
         isOpen={openIndex === 0}
         onToggle={() => handleToggle(0)}
+        onClose={handleClose}
         data={regions}
         title="რეგიონების მიხედვით"
         dropdownType="checkbox"
@@ -30,6 +34,7 @@ const FilterList = () => {
         index={1}
         isOpen={openIndex === 1}
         onToggle={() => handleToggle(1)}
+        onClose={handleClose}
         title="ფასის მიხედვით"
         dropdownType="input"
       >
@@ -39,6 +44,7 @@ const FilterList = () => {
         index={2}
         isOpen={openIndex === 2}
         onToggle={() => handleToggle(2)}
+        onClose={handleClose}
         title="ფართობის მიხედვით"
         dropdownType="input"
       >
@@ -48,6 +54,7 @@ const FilterList = () => {
         index={3}
         isOpen={openIndex === 3}
         onToggle={() => handleToggle(3)}
+        onClose={handleClose}
         title="საძინებლების რაოდენობა"
         dropdownType="bedroom"
       >

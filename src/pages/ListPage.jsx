@@ -155,7 +155,6 @@ const ListPage = () => {
     setSearchParams(new URLSearchParams());
   };
 
-  console.log(isAnyFilter);
   return (
     <>
       <StyledFilter>
