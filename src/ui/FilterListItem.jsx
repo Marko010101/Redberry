@@ -5,6 +5,7 @@ import ArrowDown from "../../public/arrowDown.svg?react";
 import DropdownInput from "./DropdownInput.jsx";
 import Dropdown from "./Dropdown.jsx";
 import Dropdownbedroom from "./Dropdownbedroom.jsx";
+import { useOutsideClick } from "../hooks/useOutsideClick.js";
 
 const StyledLi = styled.li`
   position: relative;
@@ -24,12 +25,14 @@ function FilterListItem({
   children,
   isOpen,
   onToggle,
+  onClose,
   data,
   title,
   dropdownType,
 }) {
+  const ref = useOutsideClick(onClose);
   return (
-    <StyledLi onClick={onToggle} isOpen={isOpen}>
+    <StyledLi onClick={onToggle} isOpen={isOpen} ref={isOpen ? ref : null}>
       {children} {isOpen ? <ArrowUp /> : <ArrowDown />}
       {isOpen && dropdownType === "checkbox" && (
         <Dropdown
