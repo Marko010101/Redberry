@@ -36,13 +36,22 @@ function FilterListItem({
           data={data}
           title={title}
           onClick={(e) => e.stopPropagation()}
+          onClose={onToggle}
         />
       )}
       {isOpen && dropdownType === "input" && (
-        <DropdownInput title={title} onClick={(e) => e.stopPropagation()} />
+        <DropdownInput
+          title={title}
+          onClick={(e) => e.stopPropagation()}
+          onClose={onToggle}
+        />
       )}
       {isOpen && dropdownType === "bedroom" && (
-        <Dropdownbedroom title={title} onClick={(e) => e.stopPropagation()} />
+        <Dropdownbedroom
+          title={title}
+          onClick={(e) => e.stopPropagation()}
+          onClose={onToggle}
+        />
       )}
     </StyledLi>
   );
