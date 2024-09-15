@@ -7,7 +7,7 @@ import Loader from "../ui/Loader.jsx";
 import PageNotFound from "./PageNotFound.jsx";
 import RealEstateDetails from "../ui/RealEstateDetails.jsx";
 import SliderListing from "../ui/SliderListing.jsx";
-import useRealEstateById from "../hooks/useRealEstateById.js";
+import { useRealEstateById } from "../hooks/useRealEstateById.js";
 
 const ListingDetails = () => {
   const navigate = useNavigate();
