@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 const Button = styled.button`
   padding: 1rem 1.6rem;
-  
+
   padding: ${(props) => props.p && props.p};
   font-weight: var(--font-weight-medium);
 
@@ -29,6 +29,15 @@ const Button = styled.button`
       color: var(--color-primary);
       border: 1px solid var(--color-primary);
       border-radius: 1rem;
+
+      :hover {
+        color: var(--white);
+        background-color: var(--color-primary);
+      }
+
+      :hover svg {
+        fill: var(--white);
+      }
 
       & svg {
         fill: var(--color-primary);

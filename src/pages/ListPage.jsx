@@ -10,46 +10,6 @@ import FilterList from "../ui/FilterList.jsx";
 import Loader from "../ui/Loader.jsx";
 import RealEstateCard from "../ui/RealEstateCard.jsx";
 
-const StyledFilter = styled.section`
-  margin-top: 7.7rem;
-  display: flex;
-  justify-content: space-between;
-
-  & ul {
-    display: flex;
-    gap: 2.4rem;
-    padding: 0.6rem;
-    border: 1px solid var(--color-light-gray);
-    border-radius: 1rem;
-  }
-
-  & > div {
-    display: flex;
-    gap: 1.6rem;
-
-    & button {
-      display: flex;
-      align-items: center;
-      gap: 0.2rem;
-    }
-  }
-`;
-
-const StyledList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  margin-top: 3.2rem;
-
-  & > h3 {
-    width: max-content;
-    font-size: var(--font-size-big);
-    font-weight: var(--font-weight-regular);
-    margin-top: 3.3rem;
-    text-align: center;
-  }
-`;
-
 const ListPage = () => {
   const { list, isLoading, error } = useRealEstate();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -114,6 +74,7 @@ const ListPage = () => {
   });
 
   if (isLoading) return <Loader />;
+  if (error) return;
 
   const isAnyFilter =
     Boolean(selectedRegions.length) ||
@@ -162,12 +123,16 @@ const ListPage = () => {
 
         <div>
           <Button type="primary">
-            <PlusVector />
-            ლისტინგის დამატება
+            <span>
+              <PlusVector />
+            </span>
+            <p>ლისტინგის დამატება</p>
           </Button>
           <Button type="secondary">
-            <PlusVector />
-            აგენტის დამატება
+            <span>
+              <PlusVector />
+            </span>
+            <p>აგენტის დამატება</p>
           </Button>
         </div>
       </StyledFilter>
@@ -191,7 +156,7 @@ const ListPage = () => {
         )}
         {(minArea || maxArea) && (
           <p>
-            {minArea ? minArea : "0"}მ² - {maxArea ? maxArea : "∞"}მ²
+            {minArea ? minArea : "0"}² - {maxArea ? maxArea : "∞"}მ²
             <span onClick={handleClearArea}>
               <X />
             </span>
@@ -220,8 +185,56 @@ const ListPage = () => {
     </>
   );
 };
-// მ²
 export default ListPage;
+
+const StyledFilter = styled.section`
+  margin-top: 7.7rem;
+  display: flex;
+  justify-content: space-between;
+
+  & ul {
+    display: flex;
+    gap: 2.4rem;
+    padding: 0.6rem;
+    border: 1px solid var(--color-light-gray);
+    border-radius: 1rem;
+  }
+
+  & > div {
+    display: flex;
+    gap: 1.6rem;
+
+    & button {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+
+      & > span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.2rem;
+        height: 2.2rem;
+      }
+    }
+  }
+`;
+
+const StyledList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  padding: 3.2rem 0rem 15rem 0rem;
+
+  & > h3 {
+    width: max-content;
+    font-size: var(--font-size-big);
+    font-weight: var(--font-weight-regular);
+    margin-top: 3.3rem;
+    text-align: center;
+  }
+`;
+
 const StyledFilteredList = styled.div`
   display: flex;
   align-items: center;

@@ -79,7 +79,7 @@ const DropdownInput = ({ onClick, title, onClose }) => {
         <InputWrapper>
           <InputText
             type="number"
-            placeholder="დან"
+            placeholder="მდე"
             value={maxValue}
             onChange={(e) => setMaxValue(e.target.value)}
           />
@@ -93,7 +93,12 @@ const DropdownInput = ({ onClick, title, onClose }) => {
         <span>300,000 {symbol}</span>
       </div>
 
-      <StyledButton type="primary" p="0.8rem 1.4rem" onClick={handleSave}>
+      <StyledButton
+        type="primary"
+        p="0.8rem 1.4rem"
+        disabled={!isValid}
+        onClick={handleSave}
+      >
         არჩევა
       </StyledButton>
     </StyledDropdownInput>
@@ -148,4 +153,8 @@ const StyledDropdownInput = styled(StyledDropdown)`
 
 const StyledButton = styled(Button)`
   font-size: var(--font-size-small);
+
+  &:hover {
+    background-color: var(--color-secondary);
+  }
 `;

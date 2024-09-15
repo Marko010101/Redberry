@@ -6,37 +6,6 @@ import { StyledDropdown } from "./StyledDropdown.jsx";
 import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const StyledDropdownCheckbox = styled(StyledDropdown)`
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: min-content;
-  display: grid;
-  width: 73rem;
-  column-gap: 3.2rem;
-  row-gap: 1.6rem;
-
-  & label {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-  }
-
-  & label,
-  & input,
-  & span {
-    cursor: pointer;
-  }
-
-  & > button {
-    grid-column: 1 / -1;
-    justify-self: end;
-    margin-top: 3.2rem;
-  }
-`;
-
-const StyledButton = styled(Button)`
-  font-size: var(--font-size-small);
-`;
-
 const Dropdown = ({ data, onClick, title, onClose }) => {
   const [checkedRegions, setCheckedRegions] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -94,3 +63,38 @@ const Dropdown = ({ data, onClick, title, onClose }) => {
 };
 
 export default Dropdown;
+
+const StyledDropdownCheckbox = styled(StyledDropdown)`
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: min-content;
+  display: grid;
+  width: 73rem;
+  column-gap: 3.2rem;
+  row-gap: 1.6rem;
+
+  & label {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  & label,
+  & input,
+  & span {
+    cursor: pointer;
+  }
+
+  & > button {
+    grid-column: 1 / -1;
+    justify-self: end;
+    margin-top: 3.2rem;
+
+    &:hover {
+      background-color: var(--color-secondary);
+    }
+  }
+`;
+
+const StyledButton = styled(Button)`
+  font-size: var(--font-size-small);
+`;

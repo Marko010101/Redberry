@@ -2,6 +2,24 @@ import styled from "styled-components";
 
 import { useMoveBack } from "../hooks/useMoveBack";
 
+function PageNotFound() {
+  const moveBack = useMoveBack();
+
+  return (
+    <StyledPageNotFound>
+      <h1>Sorry, this page isn`t available.</h1>
+      <p>
+        The link you followed may be broken, or the page may have been removed.
+        <span onClick={moveBack}>
+          Go back to <span>Redberry.</span>
+        </span>
+      </p>
+    </StyledPageNotFound>
+  );
+}
+
+export default PageNotFound;
+
 const StyledPageNotFound = styled.main`
   height: 100vh;
   display: flex;
@@ -31,21 +49,3 @@ const StyledPageNotFound = styled.main`
     align-self: center;
   }
 `;
-
-function PageNotFound() {
-  const moveBack = useMoveBack();
-
-  return (
-    <StyledPageNotFound>
-      <h1>Sorry, this page isn't available.</h1>
-      <p>
-        The link you followed may be broken, or the page may have been removed.
-        <span onClick={moveBack}>
-          Go back to <span>Redberry.</span>
-        </span>
-      </p>
-    </StyledPageNotFound>
-  );
-}
-
-export default PageNotFound;
