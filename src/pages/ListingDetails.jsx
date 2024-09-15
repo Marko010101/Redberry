@@ -3,16 +3,16 @@ import styled from "styled-components";
 
 import ArrowLeft from "../../public/arrorLeft.svg?react";
 
-import { useRealestateById } from "../hooks/useRealestateById.js";
 import Loader from "../ui/Loader.jsx";
 import PageNotFound from "./PageNotFound.jsx";
 import RealEstateDetails from "../ui/RealEstateDetails.jsx";
 import SliderListing from "../ui/SliderListing.jsx";
+import useRealEstateById from "../hooks/useRealEstateById.js";
 
 const ListingDetails = () => {
   const navigate = useNavigate();
   const { realEstateId } = useParams();
-  const { realEstate, isLoading, error } = useRealestateById(realEstateId);
+  const { realEstate, isLoading, error } = useRealEstateById(realEstateId);
 
   if (isLoading) return <Loader />;
   if (error) return <PageNotFound />;

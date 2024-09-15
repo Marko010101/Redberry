@@ -9,7 +9,6 @@ export const LoaderWrapper = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(255, 255, 255, 0.8);
   z-index: 9999;
 `;
 
@@ -19,7 +18,7 @@ export const LoaderComponent = styled.div`
   aspect-ratio: 1;
   border-radius: 50%;
   padding: 1px;
-  background: conic-gradient(#0000 10%, #f03355) content-box;
+  background: conic-gradient(#0000 10%, var(--color-primary)) content-box;
   -webkit-mask: repeating-conic-gradient(
       #0000 0deg,
       #000 1deg 20deg,

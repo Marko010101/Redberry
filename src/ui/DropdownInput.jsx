@@ -12,7 +12,7 @@ const DropdownInput = ({ onClick, title, onClose }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const isPriceFilter = title === "ფასის მიხედვით";
-  let isValid = maxValue >= minValue || maxValue === "";
+  let isValid = Number(maxValue) >= Number(minValue) || maxValue === "";
 
   useEffect(() => {
     const minParam = isPriceFilter
@@ -52,6 +52,24 @@ const DropdownInput = ({ onClick, title, onClose }) => {
 
   const symbol = title === "ფასის მიხედვით" ? "₾" : "მ²";
   const text = title === "ფასის მიხედვით" ? "ფასი" : "მ²";
+  const isPrice = title === "ფასის მიხედვით";
+
+  const presetValuesPrice = [
+    { number: "50000", display: "50,000" },
+    { number: "100000", display: "100,000" },
+    { number: "150000", display: "150,000" },
+    { number: "200000", display: "200,000" },
+    { number: "300000", display: "300,000" },
+  ];
+  const presetValuesArea = [
+    { number: "50", display: "50" },
+    { number: "100", display: "100" },
+    { number: "150", display: "150" },
+    { number: "200", display: "200" },
+    { number: "300", display: "300" },
+  ];
+
+  const displayPresentValue = isPrice ? presetValuesPrice : presetValuesArea;
 
   return (
     <StyledDropdownInput onClick={onClick} isValid={isValid}>
@@ -61,7 +79,6 @@ const DropdownInput = ({ onClick, title, onClose }) => {
           <InputText
             type="number"
             placeholder="დან"
-            min={50000}
             value={minValue}
             onChange={(e) => setMinValue(e.target.value)}
           />
@@ -69,11 +86,11 @@ const DropdownInput = ({ onClick, title, onClose }) => {
         </InputWrapper>
         {!isValid && <p className="errorText">ჩაწერეთ ვალიდური მონაცემები</p>}
         <p>მინ. {text}</p>
-        <span>50,000 {symbol}</span>
-        <span>100,000 {symbol}</span>
-        <span>150,000 {symbol}</span>
-        <span>200,000 {symbol}</span>
-        <span>300,000 {symbol}</span>
+        {displayPresentValue.map((preset) => (
+          <span key={preset.number} onClick={() => setMinValue(preset.number)}>
+            {preset.display} {symbol}
+          </span>
+        ))}
       </div>
       <div>
         <InputWrapper>
@@ -86,11 +103,11 @@ const DropdownInput = ({ onClick, title, onClose }) => {
           <CurrencySymbol>{symbol}</CurrencySymbol>
         </InputWrapper>
         <p>მაქს. {text}</p>
-        <span>50,000 {symbol}</span>
-        <span>100,000 {symbol}</span>
-        <span>150,000 {symbol}</span>
-        <span>200,000 {symbol}</span>
-        <span>300,000 {symbol}</span>
+        {displayPresentValue.map((preset) => (
+          <span key={preset.number} onClick={() => setMaxValue(preset.number)}>
+            {preset.display} {symbol}
+          </span>
+        ))}
       </div>
 
       <StyledButton
@@ -125,6 +142,7 @@ const StyledDropdownInput = styled(StyledDropdown)`
       margin-top: 0.8rem;
       font-size: var(--font-size-small);
       font-weight: var(--font-weight-regular);
+      cursor: pointer;
     }
 
     & > .errorText {

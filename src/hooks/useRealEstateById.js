@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { getRealEstateById } from "../service/apiRealEstate.js";
+import { useRealEstateById } from "../service/apiRealEstate.js";
 
-export const useRealestateById = (id) => {
+export const useRealEstateById = (id) => {
   const {
     data: realEstate,
     isLoading,
