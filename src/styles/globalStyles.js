@@ -12,8 +12,11 @@ const GlobalStyles = createGlobalStyle`
   --color-secondary: #DF3014;
   --color-very-light-gray: #F3F3F3;
   --color-light-gray: #DBDBDB;
-  --color-border-input:#808A93;
-
+  --color-storm-gray: #676E76;
+  --color-cloudy-gray:#808A93;
+  --color-midnight-blue: #02152657;
+  --color-midnight-navy: #02152614;
+  --color-midnight-slate:#2D3648;
   --color-text-secondary: #02152680;
   --color-text-dark: #021526b2;
   
@@ -34,12 +37,14 @@ const GlobalStyles = createGlobalStyle`
   --font-size-small: 1.4rem;
   --font-size-medium: 1.6rem;
   --font-size-big: 2rem;
+  --font-size-large: 2.4rem;
   --font-size-huge: 2.8rem;
+  --font-size-extra-huge: 3.2rem;
+  --font-size-largest: 4.8rem;
 
 
   /* Site width  */
-  --site-width: 160rem;
-
+  --site-width: 159.6rem;
 }
 
 *,
@@ -48,6 +53,8 @@ const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+
+  transition: background-color 0.2s, border 0.2s, box-shadow 0.2s;
 }
 
 html {
@@ -60,7 +67,7 @@ body {
 
   color: var(--color-text);
 
-  /* transition: color 0.3s, background-color 0.3s; */
+  transition: color 0.2s, background-color 0.2s, box-shadow 0.2s;
   min-height: 100vh;
   font-size: 1.6rem;
 }
@@ -128,6 +135,21 @@ input[type=number] {
 img {
   max-width: 100%;
 }
+
+
+
+.isRental{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  padding: 0.6rem;
+  letter-spacing: 0.05rem;
+  font-weight: var(--font-weight-medium);
+  background-color: var(--color-text-secondary);
+}
+
 `;
 
 export default GlobalStyles;

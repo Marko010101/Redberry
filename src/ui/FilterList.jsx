@@ -16,11 +16,11 @@ const FilterList = () => {
   };
 
   if (isLoading) return <Loader />;
+  if (error) return;
 
   return (
     <ul>
       <FilterListItem
-        index={0}
         isOpen={openIndex === 0}
         onToggle={() => handleToggle(0)}
         onClose={handleClose}
@@ -31,7 +31,6 @@ const FilterList = () => {
         რეგიონი
       </FilterListItem>
       <FilterListItem
-        index={1}
         isOpen={openIndex === 1}
         onToggle={() => handleToggle(1)}
         onClose={handleClose}
@@ -41,7 +40,6 @@ const FilterList = () => {
         საფასო კატეგორია
       </FilterListItem>
       <FilterListItem
-        index={2}
         isOpen={openIndex === 2}
         onToggle={() => handleToggle(2)}
         onClose={handleClose}
@@ -51,7 +49,6 @@ const FilterList = () => {
         ფართობი
       </FilterListItem>
       <FilterListItem
-        index={3}
         isOpen={openIndex === 3}
         onToggle={() => handleToggle(3)}
         onClose={handleClose}

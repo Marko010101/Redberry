@@ -7,20 +7,6 @@ import Dropdown from "./Dropdown.jsx";
 import Dropdownbedroom from "./Dropdownbedroom.jsx";
 import { useOutsideClick } from "../hooks/useOutsideClick.js";
 
-const StyledLi = styled.li`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  padding: 0.8rem 1.4rem;
-  border-radius: 0.6rem;
-  font-weight: var(--font-weight-medium);
-  cursor: pointer;
-  background-color: ${(props) =>
-    props.isOpen ? "var(--color-very-light-gray)" : "transparent"};
-`;
-
 function FilterListItem({
   children,
   isOpen,
@@ -61,3 +47,17 @@ function FilterListItem({
 }
 
 export default FilterListItem;
+
+const StyledLi = styled.li`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.8rem 1.4rem;
+  border-radius: 0.6rem;
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  background-color: ${(props) =>
+    props.isOpen ? "var(--color-very-light-gray)" : "transparent"};
+`;

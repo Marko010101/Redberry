@@ -8,6 +8,7 @@ import AppLayout from "./ui/AppLayout.jsx";
 import ListPage from "./pages/ListPage.jsx";
 import PageNotFound from "./pages/PageNotFound.jsx";
 import Loader from "./ui/Loader.jsx";
+import ListingDetails from "./pages/ListingDetails.jsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -27,6 +28,11 @@ export const App = () => {
           <Routes>
             <Route element={<AppLayout />}>
               <Route path="/" index element={<ListPage />} />
+              <Route
+                path="/real-estates/:realEstateId"
+                index
+                element={<ListingDetails />}
+              />
             </Route>
             <Route path="*" element={<PageNotFound />} />
           </Routes>

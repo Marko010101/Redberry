@@ -5,24 +5,6 @@ import Button from "./Button.jsx";
 import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
 
-const StyledDropdownInput = styled(StyledDropdown)`
-  display: flex;
-  flex-direction: column;
-  width: max-content;
-`;
-
-const StyledInput = styled(InputText)`
-  width: 4.1rem;
-  padding: 1rem;
-  text-align: center;
-`;
-
-const StyledButton = styled(Button)`
-  font-size: var(--font-size-small);
-  align-self: flex-end;
-  margin-top: 3.2rem;
-`;
-
 const Dropdownbedroom = ({ onClick, title, onClose }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [bedroomValue, setBedroomValue] = useState(
@@ -65,3 +47,25 @@ const Dropdownbedroom = ({ onClick, title, onClose }) => {
 };
 
 export default Dropdownbedroom;
+
+const StyledDropdownInput = styled(StyledDropdown)`
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+`;
+
+const StyledInput = styled(InputText)`
+  width: 4.1rem;
+  padding: 1rem;
+  text-align: center;
+`;
+
+const StyledButton = styled(Button)`
+  font-size: var(--font-size-small);
+  align-self: flex-end;
+  margin-top: 3.2rem;
+
+  &:hover {
+    background-color: var(--color-secondary);
+  }
+`;

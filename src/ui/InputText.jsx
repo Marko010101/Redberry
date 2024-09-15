@@ -9,7 +9,7 @@ export const InputWrapper = styled.div`
 export const InputText = styled.input`
   width: 100%;
   border-radius: 0.6rem;
-  border: 0.1rem solid var(--color-border-input);
+  border: 0.1rem solid var(--color-cloudy-gray);
   padding: 1rem;
   padding-right: 2.5rem;
   font-size: var(--font-size-small);
