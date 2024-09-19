@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import HeaderLogo from "../../public/logo.svg?react";
+import HeaderLogo from "../../assets/logo.svg?react";
 
 const StyledHeader = styled.div`
   height: 10rem;

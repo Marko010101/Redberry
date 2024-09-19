@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import Location from "../../public/location.svg?react";
+import Location from "../../assets/location.svg?react";
 
-import BedIcon from "../../public/bed.svg?react";
-import PostCodeIcon from "../../public/postCode.svg?react";
-import Square from "../../public/square.svg?react";
-import { formatPrice } from "../utils/formatPrice.js";
+import BedIcon from "../../assets/bed.svg?react";
+import PostCodeIcon from "../../assets/postCode.svg?react";
+import Square from "../../assets/square.svg?react";
+import { formatPrice } from "../../utils/formatPrice.js";
 
 const RealEstateCard = ({ realEstate }) => {
   const {

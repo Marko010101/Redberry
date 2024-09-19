@@ -2,12 +2,13 @@ import styled, { css } from "styled-components";
 
 const Button = styled.button`
   padding: 1rem 1.6rem;
+  height: 4.7rem;
 
   padding: ${(props) => props.p && props.p};
   font-weight: var(--font-weight-medium);
 
   ${(props) =>
-    props.type === "primary" &&
+    props.variant === "primary" &&
     css`
       background-color: var(--color-primary);
       color: var(--white);
@@ -23,7 +24,7 @@ const Button = styled.button`
     `}
 
   ${(props) =>
-    props.type === "secondary" &&
+    props.variant === "secondary" &&
     css`
       background-color: var(--white);
       color: var(--color-primary);

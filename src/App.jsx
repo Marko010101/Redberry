@@ -1,14 +1,16 @@
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import GlobalStyles from "./styles/globalStyles.js";
-import AppLayout from "./ui/AppLayout.jsx";
-import ListPage from "./pages/ListPage.jsx";
-import PageNotFound from "./pages/PageNotFound.jsx";
-import Loader from "./ui/Loader.jsx";
-import ListingDetails from "./pages/ListingDetails.jsx";
+import AppLayout from "./components/AppLayout.jsx";
+import Loader from "./components/ui/Loader.jsx";
+
+const ListPage = lazy(() => import("./pages/ListPage.jsx"));
+const PageNotFound = lazy(() => import("./pages/PageNotFound.jsx"));
+const ListingDetails = lazy(() => import("./pages/ListingDetails.jsx"));
+const AddListing = lazy(() => import("./pages/AddListing.jsx"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -28,6 +30,11 @@ export const App = () => {
           <Routes>
             <Route element={<AppLayout />}>
               <Route path="/" index element={<ListPage />} />
+              <Route
+                path="/real-estate/create"
+                index
+                element={<AddListing />}
+              />
               <Route
                 path="/real-estates/:realEstateId"
                 index

@@ -1,10 +1,10 @@
 import styled from "styled-components";
-
-import Button from "./Button.jsx";
-import { InputCheckbox } from "./InputCheckbox.jsx";
-import { StyledDropdown } from "./StyledDropdown.jsx";
-import { useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+
+import Button from "./ui/Button.jsx";
+import { InputCheckbox } from "./ui/InputCheckbox.jsx";
+import { StyledDropdown } from "./ui/StyledDropdown.jsx";
 
 const Dropdown = ({ data, onClick, title, onClose }) => {
   const [checkedRegions, setCheckedRegions] = useState([]);
@@ -55,9 +55,9 @@ const Dropdown = ({ data, onClick, title, onClose }) => {
           <span>{region.name}</span>
         </label>
       ))}
-      <StyledButton type="primary" p="0.8rem 1.4rem" onClick={handleSave}>
+      <Button variant="primary" p="0.8rem 1.4rem" onClick={handleSave}>
         არჩევა
-      </StyledButton>
+      </Button>
     </StyledDropdownCheckbox>
   );
 };
@@ -76,6 +76,11 @@ const StyledDropdownCheckbox = styled(StyledDropdown)`
     display: flex;
     align-items: center;
     gap: 0.8rem;
+
+    & > span {
+      font-size: var(--font-size-small);
+      font-weight: var(--font-weight-regular);
+    }
   }
 
   & label,
@@ -88,13 +93,9 @@ const StyledDropdownCheckbox = styled(StyledDropdown)`
     grid-column: 1 / -1;
     justify-self: end;
     margin-top: 3.2rem;
-
+    font-size: var(--font-size-small);
     &:hover {
       background-color: var(--color-secondary);
     }
   }
-`;
-
-const StyledButton = styled(Button)`
-  font-size: var(--font-size-small);
 `;

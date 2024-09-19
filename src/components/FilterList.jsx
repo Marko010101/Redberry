@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import FilterListItem from "./FilterListItem.jsx";
 import { useRegions } from "../hooks/useRegions.js";
-import Loader from "./Loader.jsx";
+import Loader from "./ui/Loader.jsx";
 
 const FilterList = () => {
   const [openIndex, setOpenIndex] = useState(null);

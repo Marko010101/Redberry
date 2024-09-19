@@ -1,10 +1,10 @@
-import styled, { css } from "styled-components";
-
-import { StyledDropdown } from "./StyledDropdown.jsx";
-import { CurrencySymbol, InputText, InputWrapper } from "./InputText.jsx";
-import Button from "./Button.jsx";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import styled, { css } from "styled-components";
+
+import { StyledDropdown } from "./ui/StyledDropdown.jsx";
+import { CurrencySymbol, InputText, InputWrapper } from "./ui/InputText.jsx";
+import Button from "./ui/Button.jsx";
 
 const DropdownInput = ({ onClick, title, onClose }) => {
   const [minValue, setMinValue] = useState("");
@@ -78,6 +78,7 @@ const DropdownInput = ({ onClick, title, onClose }) => {
         <InputWrapper>
           <InputText
             type="number"
+            onWheel={(e) => e.target.blur()}
             placeholder="დან"
             value={minValue}
             onChange={(e) => setMinValue(e.target.value)}
@@ -96,6 +97,7 @@ const DropdownInput = ({ onClick, title, onClose }) => {
         <InputWrapper>
           <InputText
             type="number"
+            onWheel={(e) => e.target.blur()}
             placeholder="მდე"
             value={maxValue}
             onChange={(e) => setMaxValue(e.target.value)}
@@ -111,7 +113,7 @@ const DropdownInput = ({ onClick, title, onClose }) => {
       </div>
 
       <StyledButton
-        type="primary"
+        variant="primary"
         p="0.8rem 1.4rem"
         disabled={!isValid}
         onClick={handleSave}
@@ -155,6 +157,7 @@ const StyledDropdownInput = styled(StyledDropdown)`
   }
 
   & input {
+    padding-right: 2.5rem;
     ${(props) =>
       !props.isValid &&
       css`

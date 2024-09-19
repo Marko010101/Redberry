@@ -1,13 +1,13 @@
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 
-import ArrowLeft from "../../public/arrorLeft.svg?react";
+import ArrowLeft from "../assets/arrowLeft.svg?react";
 
-import Loader from "../ui/Loader.jsx";
+import RealEstateDetails from "../components/RealEstateDetails.jsx";
 import PageNotFound from "./PageNotFound.jsx";
-import RealEstateDetails from "../ui/RealEstateDetails.jsx";
-import SliderListing from "../ui/SliderListing.jsx";
+import SliderListing from "../components/SliderListing.jsx";
 import { useRealEstateById } from "../hooks/useRealEstateById.js";
+import Loader from "../components/ui/Loader.jsx";
 
 const ListingDetails = () => {
   const navigate = useNavigate();
