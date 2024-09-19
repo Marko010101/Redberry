@@ -11,7 +11,6 @@ export const InputText = styled.input`
   border-radius: 0.6rem;
   border: 0.1rem solid var(--color-cloudy-gray);
   padding: 1rem;
-  padding-right: 2.5rem;
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-regular);
 `;

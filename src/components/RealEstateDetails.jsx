@@ -1,19 +1,19 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-import Location from "../../public/location.svg?react";
-import Bed from "../../public/bed.svg?react";
-import Square from "../../public/square.svg?react";
-import PostCode from "../../public/postCode.svg?react";
-import Email from "../../public/email.svg?react";
-import Phone from "../../public/phone.svg?react";
+import Location from "../assets/location.svg?react";
+import Bed from "../assets/bed.svg?react";
+import Square from "../assets/square.svg?react";
+import PostCode from "../assets/postCode.svg?react";
+import Email from "../assets/email.svg?react";
+import Phone from "../assets/phone.svg?react";
 
+import Loader from "../components/ui/Loader.jsx";
 import { formatDate } from "../utils/formatDate.js";
 import { formatPrice } from "../utils/formatPrice.js";
 import ModalDelete from "./ModalDelete.jsx";
 import { useDeleteRealEstate } from "../hooks/useDeleteRealEstate.js";
-import { useNavigate } from "react-router-dom";
-import Loader from "./Loader.jsx";
 
 const RealEstateDetails = ({ realEstate, realEstateId }) => {
   const navigate = useNavigate();

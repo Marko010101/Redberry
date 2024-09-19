@@ -9,7 +9,7 @@ export const InputCheckbox = styled.input`
   position: relative;
 
   &:checked {
-    background-color: limegreen;
+    background-color: var(--color-green);
   }
 
   &::before {

@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import { StyledDropdown } from "./StyledDropdown.jsx";
-import { InputText } from "./InputText.jsx";
-import Button from "./Button.jsx";
-import { useSearchParams } from "react-router-dom";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
+
+import { StyledDropdown } from "./ui/StyledDropdown.jsx";
+import { InputText } from "./ui/InputText.jsx";
+import Button from "./ui/Button.jsx";
 
 const Dropdownbedroom = ({ onClick, title, onClose }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -32,11 +33,12 @@ const Dropdownbedroom = ({ onClick, title, onClose }) => {
       <h4>{title}</h4>
       <StyledInput
         type="number"
+        onWheel={(e) => e.target.blur()}
         value={bedroomValue}
         onChange={handleInputChange}
       />
       <StyledButton
-        type="primary"
+        variant="primary"
         p="0.8rem 1.4rem"
         onClick={handleButtonClick}
       >
@@ -56,7 +58,6 @@ const StyledDropdownInput = styled(StyledDropdown)`
 
 const StyledInput = styled(InputText)`
   width: 4.1rem;
-  padding: 1rem;
   text-align: center;
 `;
 

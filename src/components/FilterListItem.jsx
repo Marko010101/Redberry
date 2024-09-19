@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
-import ArrowUp from "../../public/arrowUp.svg?react";
-import ArrowDown from "../../public/arrowDown.svg?react";
+import ArrowUp from "../assets/arrowUp.svg?react";
+import ArrowDown from "../assets/arrowDown.svg?react";
+
 import DropdownInput from "./DropdownInput.jsx";
 import Dropdown from "./Dropdown.jsx";
 import Dropdownbedroom from "./Dropdownbedroom.jsx";
@@ -19,7 +20,9 @@ function FilterListItem({
   const ref = useOutsideClick(onClose);
   return (
     <StyledLi onClick={onToggle} isOpen={isOpen} ref={isOpen ? ref : null}>
-      {children} {isOpen ? <ArrowUp /> : <ArrowDown />}
+      <p>
+        {children} <span>{isOpen ? <ArrowUp /> : <ArrowDown />}</span>
+      </p>
       {isOpen && dropdownType === "checkbox" && (
         <Dropdown
           data={data}
@@ -60,4 +63,23 @@ const StyledLi = styled.li`
   cursor: pointer;
   background-color: ${(props) =>
     props.isOpen ? "var(--color-very-light-gray)" : "transparent"};
+
+  & h4 {
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-medium);
+  }
+
+  & > p {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    & > span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+  }
 `;

@@ -3,12 +3,12 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import styled, { css } from "styled-components";
 
-import RealEstateCard from "./RealEstateCard.jsx";
-import { useRealEstate } from "../hooks/useRealEstate.js";
+import ArrowLeft from "../assets/arrowLeft.svg?react";
+import ArrowRight from "../assets/arrowRight.svg?react";
 
-import ArrowLeft from "../../public/arrorLeft.svg?react";
-import ArrowRight from "../../public/arrowRight.svg?react";
-import Loader from "./Loader.jsx";
+import RealEstateCard from "./ui/RealEstateCard.jsx";
+import Loader from "./ui/Loader.jsx";
+import { useRealEstate } from "../hooks/useRealEstate.js";
 
 const SliderListing = ({ regionName, realEstateId }) => {
   const { list, isLoading, error } = useRealEstate();

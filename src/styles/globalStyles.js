@@ -4,12 +4,22 @@ import "@fontsource/firago/500.css";
 import "@fontsource/firago/700.css";
 
 const GlobalStyles = createGlobalStyle`
+
+@font-face {
+    font-family: "Helvetica Neue";
+    src: url("/src/assets/helvetica-neue.ttf") format("opentype");
+  }
+
 :root {
 /* Colors */
   --white: #FFFFFF;
   --color-text: #021526;
+  --color-text-secondary: #02152680;
+  --color-text-helvetica: #1A1A1F;
+  --color-text-dark: #021526b2;
   --color-primary: #F93B1D;
   --color-secondary: #DF3014;
+  --color-green:#45A849;
   --color-very-light-gray: #F3F3F3;
   --color-light-gray: #DBDBDB;
   --color-storm-gray: #676E76;
@@ -17,19 +27,14 @@ const GlobalStyles = createGlobalStyle`
   --color-midnight-blue: #02152657;
   --color-midnight-navy: #02152614;
   --color-midnight-slate:#2D3648;
-  --color-text-secondary: #02152680;
-  --color-text-dark: #021526b2;
+  --color-charcoal-navy:#354451;
   
 
 
   /* Font weights */
-  --font-weight-extra-light: 200;
-  --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
-  --font-weight-semibold: 600;
   --font-weight-bold: 700;
-  --font-weight-extra-bold: 800;
 
   /* font size */
   --font-size-mini: 1rem;
@@ -62,8 +67,7 @@ html {
 }
 
 body {
-
-  font-family: "FiraGO";
+  font-family: "FiraGO", "Helvetica Neue", sans-serif;
 
   color: var(--color-text);
 
@@ -126,9 +130,15 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 /* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
+input[type="number"] {
+    -moz-appearance: textfield;
 }
 
 

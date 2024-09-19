@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
-import Button from "./Button.jsx";
 import { useOutsideClick } from "../hooks/useOutsideClick.js";
+import { ModalOverlay } from "./ui/ModalOverlay.jsx";
+import Button from "./ui/Button.jsx";
 
 const DeleteModal = ({ onClose, onApprove }) => {
   const ref = useOutsideClick(onClose);
@@ -11,10 +12,10 @@ const DeleteModal = ({ onClose, onApprove }) => {
       <ModalContent ref={ref}>
         <h3>გსურთ წაშალოთ ლისტინგი?</h3>
         <ModalActions>
-          <Button type="secondary" onClick={onClose}>
+          <Button variant="secondary" onClick={onClose}>
             გაუქმება
           </Button>
-          <Button type="primary" onClick={onApprove}>
+          <Button variant="primary" onClick={onApprove}>
             დადასტურება
           </Button>
         </ModalActions>
@@ -24,20 +25,6 @@ const DeleteModal = ({ onClose, onApprove }) => {
 };
 
 export default DeleteModal;
-
-const ModalOverlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--color-midnight-blue);
-  z-index: 9999;
-  box-shadow: 0.5rem 0.5rem 1.2rem 0rem var(--color-midnight-navy);
-`;
 
 const ModalContent = styled.div`
   width: 62.3rem;
