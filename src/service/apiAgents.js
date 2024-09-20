@@ -19,11 +19,9 @@ export async function getAgents() {
 
 export async function createAgentApi(agentData) {
   const formData = new FormData();
-  formData.append("name", agentData.name);
-  formData.append("surname", agentData.surname);
-  formData.append("email", agentData.email);
-  formData.append("phone", agentData.phone);
-  formData.append("avatar", agentData.avatar);
+  Object.keys(agentData).forEach((key) => {
+    formData.append(key, agentData[key]);
+  });
 
   const response = await fetch(`${redberryApi}/agents`, {
     method: "POST",

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { useOutsideClick } from "../hooks/useOutsideClick.js";
 import { useCreateAgent } from "../hooks/useCreateAgent.js";
@@ -9,16 +9,9 @@ import Button from "./ui/Button.jsx";
 import ValidationInput from "./ValidationInput.jsx";
 import { StyledText } from "./ui/StyledText.jsx";
 import { ModalOverlay } from "./ui/ModalOverlay.jsx";
-
-const validationText = {
-  name: "მინიმუმ ორი სიმბოლო",
-  surname: "მინიმუმ ორი სიმბოლო",
-  email: "გამოიყენეთ @redberry.ge ფოსტა",
-  phone: "მხოლოდ რიცხვები",
-  avatar: "ფოტო სავალდებულოა",
-};
-
-const errorText = "ჩაწერეთ ვალიდური მონაცემები";
+import { errorText } from "../constants/errorText.js";
+import { validationTextAgent } from "../constants/validationTextAgent.js";
+import { validateInputAgent } from "../utils/validationAgent.js";
 
 const ModalAddAgent = ({ handleToggleAgentModal }) => {
   const { createAgent, isLoading } = useCreateAgent();
@@ -40,50 +33,16 @@ const ModalAddAgent = ({ handleToggleAgentModal }) => {
     phone: "",
     avatar: "",
   });
-
   if (isLoading) return <isLoading />;
-
-  const validateInput = (name, value) => {
-    if (name === "name" || name === "surname") {
-      if (!value.trim()) return validationText.name;
-      if (value.length < 2) return errorText;
-
-      return;
-    }
-
-    if (name === "email") {
-      if (!value.trim()) return validationText.email;
-      if (!/^.+@redberry\.ge$/.test(value)) return errorText;
-
-      return;
-    }
-
-    if (name === "phone") {
-      if (!value.trim()) return validationText.phone;
-      const phonePattern = /^5[0-9]{8}$/;
-
-      if (!phonePattern.test(value)) return errorText;
-
-      return;
-    }
-
-    if (name === "avatar") {
-      if (!value) return validationText.avatar;
-      if (value.size > 1024 * 1024)
-        return "ფაილის ზომა არუნდა აღემატებოდეს 1MB";
-
-      return;
-    }
-
-    return "";
-  };
-
   const handleFileChange = (uploadedFile) => {
     if (uploadedFile) {
       const fileUrl = URL.createObjectURL(uploadedFile);
       setFile(fileUrl);
       setFormValues({ ...formValues, avatar: uploadedFile });
-      setErrors({ ...errors, avatar: validateInput("avatar", uploadedFile) });
+      setErrors({
+        ...errors,
+        avatar: validateInputAgent("avatar", uploadedFile),
+      });
     } else {
       setFile(null);
       setFormValues({ ...formValues, avatar: null });
@@ -101,34 +60,24 @@ const ModalAddAgent = ({ handleToggleAgentModal }) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
 
-    setErrors({ ...errors, [name]: validateInput(name, value) });
+    setErrors({ ...errors, [name]: validateInputAgent(name, value) });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const newErrors = {
-      name: validateInput("name", formValues.name),
-      surname: validateInput("surname", formValues.surname),
-      email: validateInput("email", formValues.email),
-      phone: validateInput("phone", formValues.phone),
-      avatar: validateInput("avatar", formValues.avatar),
-    };
+    const newErrors = Object.keys(formValues).reduce((acc, key) => {
+      acc[key] = validateInputAgent(key, formValues[key]);
+      return acc;
+    }, {});
 
     setErrors(newErrors);
 
     const hasErrors = Object.values(newErrors).some(
       (error) => error && error.length > 0
     );
-
     if (!hasErrors) {
-      const agentData = {
-        name: formValues.name,
-        surname: formValues.surname,
-        email: formValues.email,
-        phone: formValues.phone,
-        avatar: formValues.avatar,
-      };
+      const agentData = { ...formValues };
 
       await createAgent(agentData);
       handleToggleAgentModal();
@@ -148,7 +97,7 @@ const ModalAddAgent = ({ handleToggleAgentModal }) => {
               formValues={formValues}
               handleInputChange={handleInputChange}
               errors={errors}
-              validationText={validationText}
+              validationText={validationTextAgent}
               errorText={errorText}
             />
             <ValidationInput
@@ -158,7 +107,7 @@ const ModalAddAgent = ({ handleToggleAgentModal }) => {
               formValues={formValues}
               handleInputChange={handleInputChange}
               errors={errors}
-              validationText={validationText}
+              validationText={validationTextAgent}
               errorText={errorText}
             />
           </div>
@@ -170,7 +119,7 @@ const ModalAddAgent = ({ handleToggleAgentModal }) => {
               formValues={formValues}
               handleInputChange={handleInputChange}
               errors={errors}
-              validationText={validationText}
+              validationText={validationTextAgent}
               errorText={errorText}
             />
             <ValidationInput
@@ -180,7 +129,7 @@ const ModalAddAgent = ({ handleToggleAgentModal }) => {
               formValues={formValues}
               handleInputChange={handleInputChange}
               errors={errors}
-              validationText={validationText}
+              validationText={validationTextAgent}
               errorText={errorText}
             />
           </div>
@@ -265,15 +214,8 @@ const ModalContent = styled.div`
           cursor: pointer;
         }
       }
-
-      & input {
-        margin: 0.5rem 0 0.4rem 0;
-      }
     }
 
-    .TextBolder {
-      font-weight: var(--font-weight-medium);
-    }
     .grid-col {
       grid-column: 1/-1;
       display: grid;

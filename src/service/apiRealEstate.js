@@ -53,3 +53,28 @@ export async function deleteRealEstateById(id) {
   const result = await response.json();
   return result;
 }
+
+export async function createRealEstateAPi(formValues) {
+  const formData = new FormData();
+  Object.keys(formValues).forEach((key) => {
+    formData.append(key, formValues[key]);
+  });
+
+  const response = await fetch(`${redberryApi}/real-estates`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: formData,
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(
+      `Could not create real-estate, status: ${response.status}, details: ${errorText}`
+    );
+  }
+
+  const result = await response.json();
+  return result;
+}

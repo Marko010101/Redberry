@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import GlobalStyles from "./styles/globalStyles.js";
 import AppLayout from "./components/AppLayout.jsx";
 import Loader from "./components/ui/Loader.jsx";
+import { AgentModalProvider } from "./context/agentModalContext.jsx";
 
 const ListPage = lazy(() => import("./pages/ListPage.jsx"));
 const PageNotFound = lazy(() => import("./pages/PageNotFound.jsx"));
@@ -23,28 +24,30 @@ const queryClient = new QueryClient({
 export const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <BrowserRouter>
-        <GlobalStyles />
-        <Suspense fallback={<Loader />}>
-          <Routes>
-            <Route element={<AppLayout />}>
-              <Route path="/" index element={<ListPage />} />
-              <Route
-                path="/real-estate/create"
-                index
-                element={<AddListing />}
-              />
-              <Route
-                path="/real-estates/:realEstateId"
-                index
-                element={<ListingDetails />}
-              />
-            </Route>
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
+      <AgentModalProvider>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <BrowserRouter>
+          <GlobalStyles />
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              <Route element={<AppLayout />}>
+                <Route path="/" index element={<ListPage />} />
+                <Route
+                  path="/real-estate/create"
+                  index
+                  element={<AddListing />}
+                />
+                <Route
+                  path="/real-estates/:realEstateId"
+                  index
+                  element={<ListingDetails />}
+                />
+              </Route>
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </AgentModalProvider>
     </QueryClientProvider>
   );
 };

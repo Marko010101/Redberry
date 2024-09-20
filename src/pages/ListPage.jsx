@@ -1,7 +1,6 @@
 import { useRealEstate } from "../hooks/useRealEstate.js";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useState } from "react";
 
 import PlusVector from "../assets/plusVector.svg?react";
 
@@ -9,19 +8,16 @@ import Button from "../components/ui/Button.jsx";
 import FilterList from "../components/FilterList.jsx";
 import Loader from "../components/ui/Loader.jsx";
 import FilteredList from "../components/FilteredList.jsx";
-import ModalAddListing from "../components/ModalAddAgent.jsx";
+import { useAgentModal } from "../context/agentModalContext.jsx";
 
 const ListPage = () => {
   const navigate = useNavigate();
   const { list, isLoading, error } = useRealEstate();
-  const [isAgentModalOpen, setIsAgentModalOpen] = useState();
+  const { handleToggleAgentModal } = useAgentModal();
 
   const handleNavigate = () => {
     navigate("/real-estate/create");
   };
-  function handleToggleAgentModal() {
-    setIsAgentModalOpen((prev) => !prev);
-  }
 
   if (isLoading) return <Loader />;
   if (error) return;
@@ -48,10 +44,6 @@ const ListPage = () => {
       </StyledFilter>
 
       <FilteredList list={list} />
-
-      {isAgentModalOpen && (
-        <ModalAddListing handleToggleAgentModal={handleToggleAgentModal} />
-      )}
     </>
   );
 };

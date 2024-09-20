@@ -71,9 +71,13 @@ body {
 
   color: var(--color-text);
 
-  transition: color 0.2s, background-color 0.2s, box-shadow 0.2s;
+  transition: color 0.2s, background-color 0.2s, box-shadow 0.2s ;
   min-height: 100vh;
   font-size: 1.6rem;
+}
+
+body.overflow-hidden {
+  overflow: hidden;
 }
 
 input,

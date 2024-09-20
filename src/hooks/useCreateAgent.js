@@ -1,18 +1,17 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createAgentApi } from "../service/apiAgents.js";
 
 export function useCreateAgent() {
+  const queryClient = useQueryClient();
+
   const {
     mutate: createAgent,
     isLoading,
     error,
   } = useMutation({
     mutationFn: createAgentApi,
-    onSuccess: (data) => {
-      console.log("Agent created successfully", data);
-    },
-    onError: (error) => {
-      console.error("Error creating agent", error);
+    onSuccess: () => {
+      queryClient.invalidateQueries("agents");
     },
   });
 
