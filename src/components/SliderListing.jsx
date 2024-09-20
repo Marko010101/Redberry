@@ -11,7 +11,7 @@ import Loader from "./ui/Loader.jsx";
 import { useRealEstate } from "../hooks/useRealEstate.js";
 
 const SliderListing = ({ regionName, realEstateId }) => {
-  const { list, isLoading, error } = useRealEstate();
+  const { list, isLoading } = useRealEstate();
 
   const settings = {
     dots: false,
@@ -74,10 +74,6 @@ const StyledSlider = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .slick-track {
-    margin-left: -1rem;
   }
 
   .custom-arrow {

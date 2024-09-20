@@ -77,7 +77,12 @@ const Upload = ({ value, onChange, handleDelete, name, isError, setError }) => {
     <FileUploadWrapper isError={isError}>
       <label htmlFor={name}>
         <PlusCircle />
-        <input id={name} type="file" onChange={onFileChange} />
+        <input
+          id={name}
+          type="file"
+          accept=".png, .jpg, .jpeg, .webp"
+          onChange={onFileChange}
+        />
       </label>
     </FileUploadWrapper>
   );
