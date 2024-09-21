@@ -159,7 +159,7 @@ img {
   justify-content: center;
   color: var(--white);
   padding: 0.6rem;
-  letter-spacing: 0.05rem;
+  letter-spacing: 0.04em;
   font-weight: var(--font-weight-medium);
   background-color: var(--color-text-secondary);
 }

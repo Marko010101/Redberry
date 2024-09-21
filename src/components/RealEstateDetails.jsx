@@ -17,7 +17,7 @@ import { useDeleteRealEstate } from "../hooks/useDeleteRealEstate.js";
 
 const RealEstateDetails = ({ realEstate, realEstateId }) => {
   const navigate = useNavigate();
-  const { deleteRealEstate, isLoading, error } = useDeleteRealEstate();
+  const { deleteRealEstate, isLoading } = useDeleteRealEstate();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = () => setIsModalOpen(!isModalOpen);

@@ -10,9 +10,8 @@ export function useCreateListing() {
     error,
   } = useMutation({
     mutationFn: createRealEstateAPi,
-    onSuccess: (data) => {
+    onSuccess: () => {
       queryClient.invalidateQueries("realEstate");
-      console.log(data);
     },
   });
 

@@ -9,11 +9,13 @@ export const StyledText = styled.p`
   color: ${({ isError, isSuccess }) =>
     isError ? "red" : isSuccess ? "green" : "inherit"};
 
-  & svg {
-    width: 1rem;
-    height: 0.82rem;
-
-    stroke: ${({ isError, isSuccess }) =>
-      isError ? "red" : isSuccess ? "green" : "var(--color-text)"};
+  & span {
+    width: 1.3rem;
+    height: 1.1rem;
+    display: flex;
+    & svg {
+      stroke: ${({ isError, isSuccess }) =>
+        isError ? "red" : isSuccess ? "green" : "var(--color-text)"};
+    }
   }
 `;

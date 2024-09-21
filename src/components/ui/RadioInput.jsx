@@ -2,47 +2,37 @@ import styled from "styled-components";
 
 const StyledRadioInput = styled.div`
   display: flex;
-  gap: 3.2rem;
+  gap: 8.4rem;
   align-items: center;
-
-  & > label {
+  font-size: var(--font-size-small);
+  & label {
     display: flex;
     align-items: center;
-    position: relative;
-    padding-left: 2.3rem;
+    gap: 0.7rem;
+    cursor: pointer;
 
     & input[type="radio"] {
-      display: none;
-    }
-
-    & span {
-      height: 1.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
       width: 1.7rem;
+      height: 1.7rem;
+      border: 0.1rem solid var(--color-text);
       border-radius: 50%;
-      border: 0.2rem solid var(--color-text);
-      display: block;
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
+      cursor: pointer;
+      outline: none;
     }
 
-    & span::after {
+    & input[type="radio"]:checked::before {
       content: "";
-      height: 0.7rem;
-      width: 0.7rem;
-      background-color: var(--color-text);
       display: block;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%) scale(0);
+      width: 0.7rem;
+      height: 0.7rem;
+      background-color: var(--color-text);
       border-radius: 50%;
-      transition: transform 0.2s ease-in-out;
-    }
-
-    & input[type="radio"]:checked + span::after {
-      transform: translate(-50%, -50%) scale(1);
     }
   }
 `;
@@ -59,7 +49,6 @@ const RadioInput = ({ formValues, handleInputChange }) => {
           onChange={handleInputChange}
         />
         იყიდება
-        <span></span>
       </label>
       <label>
         <input
@@ -70,7 +59,6 @@ const RadioInput = ({ formValues, handleInputChange }) => {
           onChange={handleInputChange}
         />
         ქირავდება
-        <span></span>
       </label>
     </StyledRadioInput>
   );

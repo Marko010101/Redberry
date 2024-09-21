@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import HeaderLogo from "../../assets/logo.svg?react";
+import logoPng from "../../assets/logoPng.png";
 
 const StyledHeader = styled.div`
   height: 10rem;
@@ -15,8 +15,9 @@ const StyledHeader = styled.div`
     margin: 0 auto;
   }
 
-  & svg {
+  & img {
     width: 15rem;
+    height: 2.4rem;
   }
 `;
 
@@ -24,7 +25,7 @@ const Header = () => {
   return (
     <StyledHeader>
       <Link to="/">
-        <HeaderLogo />
+        <img src={logoPng} alt="Logo" />
       </Link>
     </StyledHeader>
   );

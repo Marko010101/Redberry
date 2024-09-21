@@ -85,7 +85,9 @@ const DropdownInput = ({ onClick, title, onClose }) => {
           />
           <CurrencySymbol>{symbol}</CurrencySymbol>
         </InputWrapper>
-        {!isValid && <p className="errorText">ჩაწერეთ ვალიდური მონაცემები</p>}
+        {!isValid && (
+          <p className="errorText">გთხოვთ შეიყვანოთ ვალიდური რიცხვები</p>
+        )}
         <p>მინ. {text}</p>
         {displayPresentValue.map((preset) => (
           <span key={preset.number} onClick={() => setMinValue(preset.number)}>

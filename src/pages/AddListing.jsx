@@ -137,6 +137,7 @@ const AddListing = () => {
     setFormValues(initialValues);
     setFile(null);
     setErrors(initialErrorValues);
+    navigate("/");
   };
 
   const handleInputChange = (e) => {
@@ -186,10 +187,7 @@ const AddListing = () => {
         ...formValues,
       };
       await createRealEstate(listingData, {
-        onSuccess: () => {
-          clearLocalStorage();
-          return navigate("/");
-        },
+        onSuccess: () => clearLocalStorage(),
       });
     }
   };
@@ -200,7 +198,7 @@ const AddListing = () => {
 
       <StyledForm onSubmit={handleSubmit}>
         <div>
-          <h4>გარიგების ტიპი</h4>
+          <h4 className="no-margin">გარიგების ტიპი</h4>
           <div>
             <RadioInput
               formValues={formValues}
@@ -208,7 +206,6 @@ const AddListing = () => {
             />
           </div>
         </div>
-
         <div>
           <h4>მდებარეობა</h4>
           <div>
@@ -233,7 +230,7 @@ const AddListing = () => {
               errorText={errorText}
             />
             <div>
-              <h5>რეგიონი</h5>
+              <h5>რეგიონი *</h5>
               <DropdownSelect
                 name="region_id"
                 data={regions}
@@ -245,7 +242,7 @@ const AddListing = () => {
                 errorText={errorText}
               />
             </div>
-            <div>
+            <div className="height">
               {formValues.region_id && (
                 <>
                   <h5>ქალაქი</h5>
@@ -412,6 +409,7 @@ const StyledForm = styled.form`
     & > div {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      /* grid-template-rows: 8.3rem; */
       grid-gap: 2rem;
       position: relative;
 
@@ -440,6 +438,12 @@ const StyledForm = styled.form`
     }
     .grid-col {
       grid-column: 1/-1;
+    }
+    .no-margin {
+      margin: 0rem;
+    }
+    .height {
+      height: 8.3rem;
     }
   }
 `;

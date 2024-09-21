@@ -167,6 +167,7 @@ const StyledFilteredQueries = styled.div`
   flex-wrap: wrap;
   margin-top: 1.6rem;
   gap: 0.9rem;
+  font-size: var(--font-size-small);
 
   & p {
     display: flex;
@@ -179,18 +180,15 @@ const StyledFilteredQueries = styled.div`
 
     & > span {
       display: flex;
+      align-items: center;
       cursor: pointer;
-      width: max-content;
+      width: 1.4rem;
+      height: 1.4rem;
+      stroke: var(--color-charcoal-navy);
 
       &:hover svg {
         stroke: var(--color-text);
       }
-    }
-
-    & > span svg {
-      width: 1.4rem;
-      height: 1.4rem;
-      stroke: var(--color-charcoal-navy);
     }
   }
 

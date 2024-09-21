@@ -127,7 +127,6 @@ const StyledDropdown = styled.div`
   border: 0.1rem solid var(--color-cloudy-gray);
   border-radius: 0.6rem;
   font-size: var(--font-size-small);
-  font-weight: var(--font-weight-regular);
   user-select: none;
   position: absolute;
 

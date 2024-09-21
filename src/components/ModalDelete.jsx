@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import X from "../assets/x.svg?react";
+
 import { useOutsideClick } from "../hooks/useOutsideClick.js";
 import { ModalOverlay } from "./ui/ModalOverlay.jsx";
 import Button from "./ui/Button.jsx";
@@ -12,6 +14,9 @@ const DeleteModal = ({ onClose, onApprove }) => {
       <ModalContent ref={ref}>
         <h3>გსურთ წაშალოთ ლისტინგი?</h3>
         <ModalActions>
+          <span onClick={onClose}>
+            <X />
+          </span>
           <Button variant="secondary" onClick={onClose}>
             გაუქმება
           </Button>
@@ -27,6 +32,7 @@ const DeleteModal = ({ onClose, onApprove }) => {
 export default DeleteModal;
 
 const ModalContent = styled.div`
+  position: relative;
   width: 62.3rem;
   height: 22.3rem;
   border-radius: 2rem;
@@ -52,5 +58,26 @@ const ModalActions = styled.div`
 
   & > button {
     height: 4.7rem;
+  }
+
+  & span {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.7rem;
+    height: 4.7rem;
+    top: 0.6rem;
+    right: 1.3rem;
+    cursor: pointer;
+
+    & svg {
+      height: 2.4rem;
+      width: 2.4rem;
+      stroke: var(--color-midnight-slate);
+    }
+    &:hover svg {
+      stroke: var(--color-text);
+    }
   }
 `;
