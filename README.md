@@ -11,7 +11,7 @@ This project utilizes:
 
 ### Features
 1. **OR Filtering** – Filters real estate items based on any applied filter criteria.
-2. **Detailed Property Pages** – Each property has a dedicated description page.
+2. **Detailed Property Pages** – Each property has a dedicated description page, from which users can also delete the property.
 3. **Infinite Carousel** – Displays real estate items from the same region below the description page.
 4. **Agent Addition** – Add agents with validated inputs and image upload functionality, meeting all specified requirements.
 5. **Real Estate Addition** – Add new real estate items with validated inputs, dropdowns, and image upload. Data persists through page refreshes and allows creation of properties based on existing agents.
