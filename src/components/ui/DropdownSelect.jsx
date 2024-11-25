@@ -147,7 +147,8 @@ const StyledDropdown = styled.div`
       & > span {
         display: flex;
         position: absolute;
-        left: 34rem;
+        /* left: 34rem; */
+        left: 90%;
         top: 50%;
         transform: translateY(-50%);
       }
@@ -187,6 +188,10 @@ const StyledDropdown = styled.div`
     & > li:first-of-type {
       border-top: 0.1rem solid var(--color-cloudy-gray);
     }
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 26.5rem;
   }
 `;
 

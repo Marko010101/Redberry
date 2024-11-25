@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 
-import Header from "./ui/Header.jsx";
+import Header from "./ui/Header";
 
 const StyledMain = styled.main`
   max-width: var(--site-width);

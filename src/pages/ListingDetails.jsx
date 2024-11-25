@@ -57,6 +57,9 @@ const StyledListingDetails = styled.section`
         width: 2.13rem;
         height: 2.13rem;
       }
+      @media screen and (max-width: 1200px) {
+        margin-left: 1rem;
+      }
     }
   }
 
@@ -64,5 +67,9 @@ const StyledListingDetails = styled.section`
     font-size: var(--font-size-extra-huge);
     font-weight: var(--font-weight-medium);
     margin: 5.3rem 0 5.2rem 0;
+
+    @media screen and (max-width: 1200px) {
+      margin-left: 3rem;
+    }
   }
 `;

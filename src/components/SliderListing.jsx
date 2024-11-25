@@ -21,6 +21,26 @@ const SliderListing = ({ regionName, realEstateId }) => {
     slidesToScroll: 1,
     prevArrow: <CustomPrevArrow />,
     nextArrow: <CustomNextArrow />,
+    responsive: [
+      {
+        breakpoint: 1730,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   if (isLoading) return <Loader />;
@@ -56,7 +76,6 @@ export default SliderListing;
 
 const StyledSlider = styled.div`
   position: relative;
-  width: 161.5rem;
   height: 45.5rem;
   margin-bottom: 10rem;
 
@@ -74,6 +93,7 @@ const StyledSlider = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: -5rem !important;
   }
 
   .custom-arrow {
@@ -99,13 +119,53 @@ const StyledSlider = styled.div`
   }
 
   .prev-arrow {
-    left: -6.5rem;
+    left: -4.5rem;
     transform: translateY(-50%);
   }
 
   .next-arrow {
     right: -4.5rem;
     transform: translateY(-50%);
+  }
+  .slick-list > div > div {
+    display: flex;
+  }
+
+  @media screen and (max-width: 1730px) {
+    .next-arrow {
+      right: 0rem;
+    }
+    .prev-arrow {
+      left: 0rem;
+    }
+  }
+
+  @media screen and (max-width: 1400px) {
+    .slick-slider {
+      margin: 0rem 20rem;
+    }
+    .next-arrow {
+      right: -3rem;
+    }
+    .prev-arrow {
+      left: -3rem;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    .slick-slider {
+      margin: 0rem 10rem;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    .slick-slider {
+      margin: 0rem;
+    }
+    .next-arrow {
+      right: 1rem;
+    }
+    .prev-arrow {
+      left: 1rem;
+    }
   }
 `;
 

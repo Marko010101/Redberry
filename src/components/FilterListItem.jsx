@@ -82,4 +82,8 @@ const StyledLi = styled.li`
       height: 1.4rem;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    padding: 0.6rem 1rem;
+  }
 `;

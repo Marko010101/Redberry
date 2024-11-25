@@ -98,4 +98,9 @@ const StyledDropdownCheckbox = styled(StyledDropdown)`
       background-color: var(--color-secondary);
     }
   }
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    width: max-content;
+  }
 `;

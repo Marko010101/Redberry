@@ -4,7 +4,7 @@ import styled from "styled-components";
 import X from "../assets/x.svg?react";
 import RealEstateCard from "./ui/RealEstateCard.jsx";
 
-const FilteredList = ({ list }) => {
+const FiltersList = ({ list }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   let filteredList;
@@ -157,7 +157,7 @@ const FilteredList = ({ list }) => {
   );
 };
 
-export default FilteredList;
+export default FiltersList;
 
 const StyledFilteredQueries = styled.div`
   display: flex;
@@ -197,9 +197,12 @@ const StyledFilteredQueries = styled.div`
     margin-left: 0.8rem;
     cursor: pointer;
   }
+  @media screen and (max-width: 1600px) {
+    padding: 0rem 1rem;
+  }
 `;
 
-const StyledList = styled.div`
+const StyledList = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
@@ -211,5 +214,12 @@ const StyledList = styled.div`
     font-weight: var(--font-weight-regular);
     margin-top: 3.3rem;
     text-align: center;
+  }
+
+  @media screen and (max-width: 1600px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    row-gap: 2rem;
   }
 `;

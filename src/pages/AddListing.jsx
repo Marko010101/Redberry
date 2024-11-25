@@ -446,4 +446,8 @@ const StyledForm = styled.form`
       height: 8.3rem;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    width: max-content;
+  }
 `;

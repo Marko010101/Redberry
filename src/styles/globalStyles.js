@@ -164,6 +164,38 @@ img {
   background-color: var(--color-text-secondary);
 }
 
+
+@media screen and (max-width: 1600px) {
+  html {
+  font-size: 60%;
+}
+}
+
+@media screen and (max-width: 1200px) {
+  html {
+  font-size: 57.5%;
+}
+}
+
+@media screen and (max-width: 992px) {
+  html {
+  font-size: 55%;
+}
+}
+
+@media screen and (max-width: 768px) {
+  html {
+  font-size: 52.5%;
+}
+}
+
+@media screen and (max-width: 576px) {
+  html {
+  font-size: 45%;
+}
+}
+
+
 `;
 
 export default GlobalStyles;

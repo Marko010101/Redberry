@@ -7,7 +7,7 @@ import PlusVector from "../assets/plusVector.svg?react";
 import Button from "../components/ui/Button.jsx";
 import FilterList from "../components/FilterList.jsx";
 import Loader from "../components/ui/Loader.jsx";
-import FilteredList from "../components/FilteredList.jsx";
+import FiltersList from "../components/FiltersList.jsx";
 import { useAgentModal } from "../context/agentModalContext.jsx";
 
 const ListPage = () => {
@@ -43,7 +43,7 @@ const ListPage = () => {
         </div>
       </StyledFilter>
 
-      <FilteredList list={list} />
+      <FiltersList list={list} />
     </>
   );
 };
@@ -60,10 +60,22 @@ const StyledFilter = styled.section`
     padding: 0.6rem;
     border: 1px solid var(--color-light-gray);
     border-radius: 1rem;
+
+    @media screen and (max-width: 1600px) {
+      width: max-content;
+    }
+    @media screen and (max-width: 1200px) {
+      align-self: center;
+      gap: 2rem;
+    }
+    @media screen and (max-width: 768px) {
+      gap: 0rem;
+    }
   }
 
   & > div {
     display: flex;
+    align-items: center;
     gap: 1.6rem;
 
     & button {
@@ -78,6 +90,19 @@ const StyledFilter = styled.section`
         width: 2.2rem;
         height: 2.2rem;
       }
+    }
+  }
+
+  @media screen and (max-width: 1600px) {
+    padding: 0rem 3.5rem;
+  }
+  @media screen and (max-width: 1200px) {
+    margin-top: 5rem;
+    flex-direction: column-reverse;
+
+    & > div {
+      justify-content: flex-end;
+      margin-bottom: 3rem;
     }
   }
 `;

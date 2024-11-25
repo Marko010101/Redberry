@@ -276,4 +276,18 @@ const StyledDetails = styled.div`
       }
     }
   }
+
+  @media screen and (max-width: 1600px) {
+    grid-template-columns: 1fr 40rem;
+    column-gap: 5rem;
+    padding: 0rem 1rem;
+  }
+  @media screen and (max-width: 992px) {
+    grid-template-columns: 1fr 30rem;
+    column-gap: 1rem;
+  }
+  @media screen and (max-width: 576px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;

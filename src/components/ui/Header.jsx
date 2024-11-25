@@ -19,6 +19,10 @@ const StyledHeader = styled.div`
     width: 15rem;
     height: 2.4rem;
   }
+
+  @media screen and (max-width: 1600px) {
+    padding-left: 10rem;
+  }
 `;
 
 const Header = () => {

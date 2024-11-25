@@ -3,9 +3,11 @@ import { useState } from "react";
 import FilterListItem from "./FilterListItem.jsx";
 import { useRegions } from "../hooks/useRegions.js";
 import Loader from "./ui/Loader.jsx";
+import { useEffect } from "react";
 
 const FilterList = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [isSmallDevice, setIsSmallDevice] = useState(window.innerWidth <= 768);
   const { regions, isLoading, error } = useRegions();
 
   const handleToggle = (index) => {
@@ -15,8 +17,20 @@ const FilterList = () => {
     setOpenIndex(null);
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallDevice(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   if (isLoading) return <Loader />;
-  if (error) return;
+  if (error) return <p>{error.message || error}</p>;
 
   return (
     <ul>
@@ -37,7 +51,7 @@ const FilterList = () => {
         title="ფასის მიხედვით"
         dropdownType="input"
       >
-        საფასო კატეგორია
+        {isSmallDevice ? "ფასი" : "საფასო კატეგორია"}
       </FilterListItem>
       <FilterListItem
         isOpen={openIndex === 2}
@@ -55,7 +69,7 @@ const FilterList = () => {
         title="საძინებლების რაოდენობა"
         dropdownType="bedroom"
       >
-        საძინებების რაოდენობა
+        {isSmallDevice ? "საძინებლები" : "საძინებების რაოდენობა"}
       </FilterListItem>
     </ul>
   );
