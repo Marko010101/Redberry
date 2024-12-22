@@ -43,7 +43,14 @@ export const validateInputListing = (name, value) => {
 
     if (value.size > 1024 * 1024) return "ფაილის ზომა არუნდა აღემატებოდეს 1MB";
 
-    const allowedTypes = ["image/png", "image/jpeg", "image/jpg", "image/webp"];
+    const allowedTypes = [
+      "image/png",
+      "image/jpeg",
+      "image/jpg",
+      "image/webp",
+      "image/avif",
+    ];
+
     if (!allowedTypes.includes(value.type)) {
       return "ფაილის ფორმატი უნდა იყოს .png, .jpg, image/webp ან .jpeg";
     }
