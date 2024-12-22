@@ -80,7 +80,7 @@ const Upload = ({ value, onChange, handleDelete, name, isError, setError }) => {
         <input
           id={name}
           type="file"
-          accept=".png, .jpg, .jpeg, .webp"
+          accept=".png, .jpg, .jpeg, .webp, .avif"
           onChange={onFileChange}
         />
       </label>

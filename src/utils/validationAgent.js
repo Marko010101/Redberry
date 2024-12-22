@@ -29,7 +29,13 @@ export const validateInputAgent = (name, value) => {
     if (!value) return validationTextAgent.avatar;
     if (value.size > 1024 * 1024) return "ფაილის ზომა არუნდა აღემატებოდეს 1MB";
 
-    const allowedTypes = ["image/png", "image/jpeg", "image/jpg"];
+    const allowedTypes = [
+      "image/png",
+      "image/jpeg",
+      "image/jpg",
+      "image/webp",
+      "image/avif",
+    ];
     if (!allowedTypes.includes(value.type))
       return "ფაილის ფორმატი უნდა იყოს .png, .jpg, ან .jpeg";
 
